@@ -12,7 +12,9 @@ GROUP_CHAT_ID = os.getenv("GROUP_CHAT_ID", "PLACE_YOUR_CHAT_ID")
 logging.basicConfig(level=logging.INFO)
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
-
+@dp.message_handler()
+async def get_chat_id(message: types.Message):
+    await message.reply(f"Chat ID: {message.chat.id}")
 # Тимчасове збереження фото з причинами
 photo_data = []
 
